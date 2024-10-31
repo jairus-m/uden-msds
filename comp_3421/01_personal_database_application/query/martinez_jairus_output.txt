@@ -1,0 +1,239 @@
+Last login: Tue Feb 13 16:58:23 on ttys027
+You have new mail.
+(base) jairusmartinez@Jairuss-MacBook-Pro hw % mysql --local-infile=1 -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 55
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source martinez_jairus_05.sql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                                           |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1. Return the user_id, subscription_type, and payment_interval of the oldest premium subscribers that pay semi-annually and have more than 99 activities. |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-------------------+------------------+---------------+
+| user_id | subscription_type | payment_interval | purchase_date |
++---------+-------------------+------------------+---------------+
+|    9457 | premium           | semi-annual      | 2019-04-16    |
+|    3962 | premium           | semi-annual      | 2019-09-13    |
+|    2896 | premium           | semi-annual      | 2020-07-09    |
+|    5909 | premium           | semi-annual      | 2021-10-20    |
++---------+-------------------+------------------+---------------+
+4 rows in set (0.08 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
++-------------------------------------------------------------------------------------+
+|                                                                                     |
++-------------------------------------------------------------------------------------+
+| 2. Return the count and total revenue of each subscription type and order by count. |
++-------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++-------------------+-----------+---------------+
+| subscription_type | num_types | total_revenue |
++-------------------+-----------+---------------+
+| free              |      6454 |          NULL |
+| premium           |      3546 |        134251 |
++-------------------+-----------+---------------+
+2 rows in set (0.02 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
++--------------------------------------------------------------------------------------------------------------+
+|                                                                                                              |
++--------------------------------------------------------------------------------------------------------------+
+| 3. Return the count of premium users that have less than 10 activities uploaded and group by activity count. |
++--------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++----------------+-----------+
+| activity_count | num_users |
++----------------+-----------+
+|              1 |        31 |
+|              2 |        38 |
+|              3 |        36 |
+|              4 |        36 |
+|              5 |        37 |
+|              6 |        39 |
+|              7 |        36 |
+|              8 |        36 |
+|              9 |        43 |
+|             10 |        36 |
++----------------+-----------+
+10 rows in set (0.04 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
++----------------------+
+|                      |
++----------------------+
+| 4. Insert user10001. |
++----------------------+
+1 row in set (0.00 sec)
+
++---------------------------------------------------------------+
+|                                                               |
++---------------------------------------------------------------+
+| Before: RUN SELECT * FROM Users ORDER BY user_id DESC LIMIT 3 |
++---------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10000 | user10000 | free              | 2018-06-14   |
+|    9999 | user9999  | premium           | 2018-04-22   |
+|    9998 | user9998  | premium           | 2020-02-28   |
++---------+-----------+-------------------+--------------+
+3 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
++--------------------------------------------------------------+
+|                                                              |
++--------------------------------------------------------------+
+| After: RUN SELECT * FROM Users ORDER BY user_id DESC LIMIT 3 |
++--------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10001 | user10001 | free              | 2024-02-11   |
+|   10000 | user10000 | free              | 2018-06-14   |
+|    9999 | user9999  | premium           | 2018-04-22   |
++---------+-----------+-------------------+--------------+
+3 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
++---------------------------------+
+|                                 |
++---------------------------------+
+| 5. Update user10001 to premium. |
++---------------------------------+
+1 row in set (0.00 sec)
+
++-------------------------------------------------------+
+|                                                       |
++-------------------------------------------------------+
+| Before: RUN SELECT * FROM Users WHERE user_id = 10001 |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10001 | user10001 | free              | 2024-02-11   |
++---------+-----------+-------------------+--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++--------------------------------------------------+
+|                                                  |
++--------------------------------------------------+
+| After: SELECT * FROM Users WHERE user_id = 10001 |
++--------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10001 | user10001 | premium           | 2024-02-11   |
++---------+-----------+-------------------+--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
++----------------------------------------------------------------+
+|                                                                |
++----------------------------------------------------------------+
+| 6. Update test subscription types date_created column to NULL. |
++----------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++-------------------------------------------------------+
+|                                                       |
++-------------------------------------------------------+
+| Before: RUN SELECT * FROM Users WHERE user_id > 10000 |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10001 | user10001 | premium           | 2024-02-11   |
+|   10002 | user10002 | test              | 2024-02-12   |
+|   10003 | user10003 | test              | 2024-02-13   |
+|   10004 | user10004 | test              | 2024-02-14   |
++---------+-----------+-------------------+--------------+
+4 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
++------------------------------------------------------+
+|                                                      |
++------------------------------------------------------+
+| After: RUN SELECT * FROM Users WHERE user_id > 10000 |
++------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------+-------------------+--------------+
+| user_id | name      | subscription_type | date_created |
++---------+-----------+-------------------+--------------+
+|   10001 | user10001 | premium           | 2024-02-11   |
+|   10002 | user10002 | test              | NULL         |
+|   10003 | user10003 | test              | NULL         |
+|   10004 | user10004 | test              | NULL         |
++---------+-----------+-------------------+--------------+
+4 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 4 rows affected (0.00 sec)
+
+mysql> 

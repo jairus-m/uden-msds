@@ -1,0 +1,312 @@
+---
+title: "Final Project COMP 4442"
+author: "Michael Wise/Jairus Martinez/Sarah Buckingham"
+date: "2024-04-30"
+output:
+  pdf_document: default
+  html_document: default
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r}
+# Libraries
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(vcd)
+library(nnet)
+library(caret)
+```
+
+# Introduction
+
+[UCI ML Repo: Predicting Student's Dropout and Academic Success](https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success)
+
+In our project, we will demonstrate the use of Multinomial Logistic Regression (MLR) using a dataset from the UCI Machine Learning Repository.
+The dataset classifies student outcomes into three categories: dropout, enrolled, and graduate.
+We will walk through the entire process of data preparation, model fitting, evaluation, and interpretation of the results.
+
+## Learning Objectives
+
+1.  **Understanding key terms and concepts**: Students should be able to recall the definition of multinomial logistic regression, differentiate it from other types of logistic regression, and understand the necessary dataset structure for this analysis.
+2.  **Recognize when multinomial logistic regression is appropriate**: Students will understand what types of problems multinomial logistic regression solves, when it is appropriate, and what assumptions must be met.
+3.  **Application of MLR**: Students will learn to apply multinomial logistic regression to predict categorical outcomes with more than two levels.
+4.  **Interpretation of the model's output**: Students will learn to interpret the results, including coefficients and the confusion matrix, and make informed conclusions about the relationships between predictors and the outcome.
+
+# R Code Implementation
+
+## Using Multiclass Logistic Regression to Predict Student Outcomes
+
+Regressions in general are statistical methods that aim to understand the relationship between independent variables and dependent variables.
+Often, this method is used to make predictions based off that learned relationship.
+In traditional regression (like linear regression), the dependent variable to predict is continuous.
+In logistic regression, the dependent variable to predict is binary and categorical.
+A special case of logistic regression is multinomial logistic regression.
+
+Multinomial logistic regression is used to solve problems that involve predicting categorical outcomes that have more than two categories.
+Many different research questions investigate the relationship between multiple predictors and multiple, categorical outcome variables.
+Some examples include predicting which political candidates will get elected to office or which diseases a patient is predicted to have.
+While multinomial logistic regression can be used for prediction, it also gives insight into the relationships between predictor variables and the dependent variables, making it suitable for inference.
+
+The data from the provided student_success.csv file is designed to address the problem of academic success in higher education.
+With its 4424 instances representing individual students and 35 features covering various aspects like college application attributes, course/academic attributes, demographics, and socio-economic factors, it provides a rich source of information for predicting students' outcomes.
+The dependent outcome variables we will be predicting fit into three classification categories - dropout, enrolled, graduate.
+
+Therefore, we can use multinomial logistic regression to:
+
+1.  Predict 3 categorical outcome variables (dropout, enrolled, graduate)
+2.  Get insight into how the different features affect the likelihood of dropping out, enrolling, or graduating (inference)
+
+## Data Preparation
+
+First, we load the dataset and check its structure and for any missing values.
+
+```{r}
+# Reads CSV file into a data frame
+academic_success <- read.csv("student_success.csv")
+
+# Structure of the data frame
+str(academic_success) # We may want to trim this down or only look at a bit of this for our final code demos
+
+```
+
+The dataset comprises 4424 observations and 35 variables, including character (factors, although not of the factor type) and numerical variables.
+The outcome variable, "Target," has three levels: "Dropout," "Enrolled," and "Graduate."
+
+We will check for any nulls in the data:
+
+```{r}
+
+# Check for missing values in specific columns
+colSums(is.na(academic_success))
+
+# Trim possible leading/trailing whitespace from all character data
+academic_success[] <- lapply(academic_success, function(x) if(is.character(x)) trimws(x) else x)
+```
+
+Next, we ensure that categorical variables are correctly formatted as factors.
+
+```{r}
+# Converts necessary variables to factor type; convert categorical columns from numeric to factor
+categorical_columns <- c("Marital.status", "Application.mode", "Daytime.evening.attendance", 
+                     "Displaced", "Educational.special.needs", "Debtor", 
+                     "Tuition.fees.up.to.date", "Gender", "Scholarship.holder", "International")
+
+# Ensure correct data type and then convert to factors
+academic_success[categorical_columns] <- lapply(academic_success[categorical_columns], function(x) factor(as.integer(x)))
+
+# Convert 'Target' to factor
+academic_success$Target <- factor(academic_success$Target)
+
+# Check the structure
+str(academic_success)
+
+```
+
+## Exploratory Data Analysis (EDA)
+
+We will now create some visualizations to explore the distribution of various categorical and continuous variables by the target outcome.
+
+```{r}
+categorical_vars <- c("Gender", "Displaced", "Scholarship.holder")
+
+# Loop through each categorical variable to create a side-by-side bar charts
+for (var in categorical_vars) {
+    p <- ggplot(academic_success, aes_string(x = var, fill = "Target")) +  # Use aes_string if using variable names stored as strings
+        geom_bar(stat = "count", position = "dodge") +  # position="dodge" makes the bars side by side
+        labs(title = paste("Distribution of", var, "by Target"), x = var, y = "Count") +
+        scale_fill_brewer(palette = "Set1") +  # Optional: uses a color palette for the fill
+        theme_minimal()
+    print(p)
+}
+
+# Histograms for Continuous Variables
+continuous_vars <- c("Age.at.enrollment", "Unemployment.rate", "GDP")
+for (var in continuous_vars) {
+    p <- ggplot(academic_success, aes_string(x = var)) +
+        geom_histogram(bins = 30, fill = "gray", color = "black") +
+        facet_wrap(~Target) +
+        labs(title = paste("Histogram of", var, "by Target"), x = var, y = "Frequency") +
+        theme_minimal()
+    print(p)
+}
+
+# Box Plot for 'Age.at.enrollment' by 'Target'
+ggplot(academic_success, aes(x = Target, y = Age.at.enrollment, fill = Target)) +
+    geom_boxplot() +
+    labs(title = "Box Plot of Age at Enrollment by Target", x = "Target", y = "Age at Enrollment") +
+    theme_minimal()
+
+# Check if there are any issues with 'Target' or other variables before plotting
+str(academic_success$Target)
+summary(academic_success$Target)
+```
+
+Categorical Variables:\
+- Gender (1 = male, 0 = female): The distribution of Gender by Target indicates variation primarily in graduation rates between genders.\
+- Displaced: The distribution of Displaced by Target indicates variation primarily in graduation rates between genders.\
+- Scholarship Holder: Our visual comparison of scholarship holders' outcomes shows a significant difference in the distributions of academic success.
+
+Continuous Variables:\
+- Age at Enrollment: Histogram and box plots show that there appear to be some slight differences in the distribution and spread of age among different target categories.\
+- Unemployment Rate: The histogram illustrates the different distributions of unemployment across the target outcomes, which have similar shapes but different means.\
+- GDP: The histogram illustrates the different distributions of GDP across the target outcomes, particularly among the graduate group.
+
+## Multinomial Logistic Regression Assumptions to Consider:
+
+1.  **Dependent/response variable is categorical (3+)**
+    -   Yes. Dropout, enrolled, and graduate.
+2.  **Little or no multicollinearity between the predictor/explanatory variables**
+    -   Multicollinearity may exist, but we do not have strong evidence of it.
+3.  **Linear relationship of independent variables to log odds**
+    -   As our data is virtually ALL binary, categorical data, we cannot check this assumption for the majority of our data.
+4.  **Prefers large sample size**
+    -   Yes, the dataset is about \~4,4k rows long.
+5.  **Problem with extreme outliers**
+    -   None identified.
+6.  **Independent observations**
+    -   Yes, assuming independence of individual outcomes. It is reasonable to say that one student's success should not affect another's.
+
+## Multinominal Logistic Regression
+
+We now can split the dataset into training and testing sets, fit the model, and evaluate its performance.
+
+We will use a 70/30 train-test split for our model.
+
+```{r}
+# Split the dataset into training and testing sets
+set.seed(123)  # for reproducibility
+train_index <- createDataPartition(academic_success$Target, p = 0.7, list = FALSE)
+train_data <- academic_success[train_index, ]
+test_data <- academic_success[-train_index, ]
+
+```
+
+```{r}
+# Fits the multinomial logistic regression model
+model <- multinom(Target ~ ., data = train_data)
+
+# Summary of the model
+summary(model)
+```
+
+Our multinomial logistic regression model was fitted to predict the academic success categories using all predictors.
+The model converged after 100 iterations, with a final residual deviance of 3367.357 and an AIC of 3587.357, indicating a good fit.
+
+## Model Evaluation
+
+Now, we predict the outcomes for the test set, construct a confusion matrix, and calculate accuracy.
+
+```{r}
+# Evaluates model performance
+
+# Predict outcomes for the test set
+predictions <- predict(model, newdata = test_data, type = "class")
+# Construct confusion matrix
+conf_matrix <- confusionMatrix(table(predictions, test_data$Target))
+accuracy <- conf_matrix$overall['Accuracy']
+
+# Prints confusion matrix and accuracy
+print(conf_matrix)
+print(paste("Accuracy:", round(accuracy, 4)))
+```
+
+Looking at our confusion matrix, we see our overall accuracy of the model is 77.38%, with a 95% CI of (0.7503, 0.796).
+
+For further assessment of the model, we will focus on the sensitivity and the positive prediction value of the model for each outcome variable.
+Sensitivity (or recall) is the true positive rate.
+It gives the rate at which the model was able to correctly predict a certain class out of all the true instances of that class.
+The positive prediction value (or precision) gives the rate at which a model correctly predicts a certain class out of all the times it predicted that class (whether a true positive or a false positive).
+
+Some takeaways regarding our specific outcomes include:
+
+\- Dropout: Moderate recall (79.58%) and precision (80.52%), indicating decent predictive power for dropouts.
+
+\- Enrolled: Poor recall (33.19%) and low precision (54.48%), suggesting it is harder to predict enrollment accurately.
+
+\- Graduate: High recall (91.84%) and moderate precision (80.00%), indicating strong predictive power for graduates.
+
+## Interpretation of Results
+
+Finally, we discuss the model's coefficients and interpret the impact of each predictor on the likelihood of students falling into each outcome category.
+
+```{r}
+# Coefficients of the model
+coefficients <- summary(model)$coefficients
+print(coefficients)
+```
+
+We can also look at these to interpret them as odds ratios:
+
+```{r}
+# Exponentiate coefficients to interpret as odds ratios
+exp_coefficients <- exp(coefficients)
+print(exp_coefficients)
+
+```
+
+Our coefficients provide insight into the relationship between predictors and the likelihood of being in each category (Enrolled, Graduate) compared to the reference category (Dropout).
+Here, we see that:
+
+\- **Marital statuses** show significant impacts on enrollment and graduation.
+Our model shows that being married (Marital Status 3) significantly increases the odds of being enrolled (7.86) or graduating (3.99) compared to dropping out.
+
+\- Different **application modes** significantly affect the likelihood of dropping out, enrolling, or graduating.
+Being an applicant that is over 23.
+years old (Application Mode 12) reduces the odds of being enrolled (0.78) and graduating (0.50), compared to dropping out.
+
+\- **Age** has a slight negative impact on enrollment and graduation compared to dropping out.
+Our model shows that a higher age at enrollment slightly decreases the odds of both being enrolled (0.96) and graduating (0.95), compared to dropping out.
+
+\- Our model suggests that students who have **up-to-date tuition fees** are more likely to graduate.
+Specifically, our model shows that being up-to-date with tuition fees significantly increases the odds of both being enrolled (8.52) and graduating (21.11), compared to dropping out.
+
+\- **Scholarship holders** increase their odds of graduating (1.98), as well as being enrolled (1.03) when compared to dropping out, highlighting the positive impact of financial support.
+
+\- **Gender** has a slight negative impact in our model.
+Males (coded as 1) have lower odds of enrolling (0.89) or graduating (0.64) compared to females (coded as 0).
+
+## Conclusion
+
+Our model's accuracy suggests it is reliable, especially for predicting dropouts and graduates, though less effective for currently enrolled students.
+
+Marital status, application mode, gender, age at enrollment, tuition fee status, and scholarship status are significant predictors of academic outcomes.
+Certain factors like being up-to-date with tuition fees have a strong positive impact on both enrollment and graduation probabilities, while others like age have negative impacts on academic success.
+
+Some takeaways from this analysis is that targeted interventions could focus on financial support, especially in ensuring tuition fees are up-to-date to improve students' academic success rates.
+Additional support may be needed for students who attend evening classes or have higher ages at enrollment to reduce dropout rates.
+Overall, the multinomial logistic regression model provides valuable insights into the factors influencing academic success and can guide policies and interventions to improve student outcomes.
+
+In this project, we demonstrated the use of multinomial logistic regression using a real-world dataset.
+We covered the steps of data preparation, exploratory data analysis, model fitting, and evaluation, as well as interpreting the results.
+By following these steps, you should now have a solid understanding of how to apply MLR and interpret its outputs in the context of predicting student success.
+
+# Reading List
+
+**Learning Resources:**
+
+\- [Introduction to MLR](https://www.youtube.com/watch?v=JcCBIPqcwFo)
+
+\- [Advanced Regression Methods, Ch. 11: MLR](https://bookdown.org/chua/ber642_advanced_regression/)
+
+\- [Geek for Geeks: MLR Overview](https://www.geeksforgeeks.org/understanding-logistic-regression/)
+
+\- [MLR Theory/Code From Scratch](https://towardsdatascience.com/ml-from-scratch-multinomial-logistic-regression-6dda9cbacf9d)
+
+\- [Wikipedia: MLR](https://en.wikipedia.org/wiki/Multinomial_logistic_regression)
+
+**R Implementation:**
+
+\- [UCLA: MLR Analysis w/ R](https://stats.oarc.ucla.edu/r/dae/multinomial-logistic-regression/)
+
+\- [Penguins: MLR w/ R Walk Through](https://quantifyinghealth.com/multinomial-logistic-regression-in-r/)
+
+\- [Kaggle MLR Walk-through Notebook](https://www.kaggle.com/code/kemalgunay/multinomial-logistic-regression)
+
+**Python Implementation:**
+
+\- [MLR w/ Python](https://machinelearningmastery.com/multinomial-logistic-regression-with-python/)
+
+\- [MLR w/ Sklearn Walk-through](https://michael-fuchs-python.netlify.app/2019/11/15/multinomial-logistic-regression/)

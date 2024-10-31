@@ -1,0 +1,76 @@
+mysql> source proc.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CALL GetUserActivitySummary(100);
++---------+----------------------+-------------------------------+---------------------------------+
+| User ID | Total Activity Count | Total Activity Duration (min) | Total Distance Traveled (miles) |
++---------+----------------------+-------------------------------+---------------------------------+
+|     100 |                   97 |                          6834 |                           36438 |
++---------+----------------------+-------------------------------+---------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CALL GetUserActivitySummary(1001);
++---------+----------------------+-------------------------------+---------------------------------+
+| User ID | Total Activity Count | Total Activity Duration (min) | Total Distance Traveled (miles) |
++---------+----------------------+-------------------------------+---------------------------------+
+|    1001 |                   56 |                          5283 |                           43366 |
++---------+----------------------+-------------------------------+---------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CALL GetUserActivitySummary(1);
++---------+----------------------+-------------------------------+---------------------------------+
+| User ID | Total Activity Count | Total Activity Duration (min) | Total Distance Traveled (miles) |
++---------+----------------------+-------------------------------+---------------------------------+
+|       1 |                   24 |                          2213 |                           15215 |
++---------+----------------------+-------------------------------+---------------------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

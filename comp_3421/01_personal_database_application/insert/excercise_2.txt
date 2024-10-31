@@ -1,0 +1,86 @@
+𝛔𝛱×∪−
+
+Employee( eid, name, age, salary, residenceState, startDate)
+
+Department( did, name, floor, supplyBudget, stateLocated)
+
+WorksFor( eid, did, startDate)
+
+Manages( eid, did, dateStartedManaging)
+
+Write RelationalAgebra (using equijoin notation) and SQL queries for:
+
+-- Return the name, age, salary and residenceState for employees who started their job on 2022-02-01.
+
+𝛱 name, age, salary, residenceState Employee 
+
+SELECT
+     name,
+     age,
+     salary,
+     residenceState
+FORM
+     Employee E
+WHERE
+     startDate = '2022-02-01';
+
+-- Find the name of departments located in “CO”.
+
+𝛱 name 𝛔 stateLocated = 'CO' Department
+
+SELECT
+     name
+FROM
+     Department
+WHERE
+     stateLocated = 'CO';
+
+
+-- Find the name of departments that are on the 2nd floor and operate in “CA”.
+
+𝛱 name 𝛔 stateLocated = 'CO' Department
+
+SELECT
+     name
+FROM
+     Department
+WHERE
+     Floor = 2 and stateLocated = 'CA'
+
+-- Find the salaries of managers that manage department number 10, started managing the department after 2022-01-01 and are 35 years old.
+
+
+SELECT
+     salary
+FROM
+     Employee E, Manages M
+WHERE
+     e.eid = M.eid and M.did = 10 and M.dateStartedManaging > "2022-01-01" and E.age > 35
+
+-- Find the age of employees who work for department number 10 and are located in “CO”.
+
+SELECT
+     age
+FROM
+    Employees E, Department D, WorksFor W
+WHERE
+    E.eid = W.eid and D.did = W.did and D.did = 10 and D.stateLocated = "CO";
+
+-- Find the name of employees who manage a department on the third floor and have a salary between 80,000 and 100,000.
+
+SELECT
+     name
+FROM
+    Manages M, Department, Employees
+WHERE
+    M.did = D.did and E.eid = M.did and D.floor = 3 and E.salary >= 80000 and E.salary <= 100000;
+
+-- Find the name of employees and name of departments for those who work for a department that is in a different state than their residence state.
+
+SELECT
+    E.name,
+    D.name
+FROM
+    Employee E, Department D, WorksFor
+WHERE 
+    E.eid = W.eid and W.did = D.did and D.residenceState != E.stateLocated;

@@ -1,0 +1,41 @@
+mysql> source loadData.sql
+Query OK, 3 rows affected (0.09 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 15000 rows affected (0.21 sec)
+Records: 15000  Deleted: 0  Skipped: 0  Warnings: 0
+
+Query OK, 5326 rows affected, 5326 warnings (0.12 sec)
+Records: 5326  Deleted: 0  Skipped: 0  Warnings: 5326
+
+Query OK, 760259 rows affected (16.39 sec)
+Records: 760259  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> source violateForeignCons.sql
+Query OK, 0 rows affected (0.00 sec)
+
++-----------------------------------------------------+
+|                                                     |
++-----------------------------------------------------+
+| inserting non-existing user to Subscriptions table: |
++-----------------------------------------------------+
+1 row in set (0.00 sec)
+
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`dash`.`subscriptions`, CONSTRAINT `subscriptions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`))
+mysql> 

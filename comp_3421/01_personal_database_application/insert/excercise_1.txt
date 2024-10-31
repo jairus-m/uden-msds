@@ -1,0 +1,51 @@
+𝛔𝛱×∪−
+
+Employee( eid, name, age, salary, residenceState, startDate)
+
+Department( did, name, floor, supplyBudget, stateLocated)
+
+WorksFor( eid, did, startDate)
+
+Manages( eid, did, dateStartedManaging)
+
+Write RelationalAgebra (using equijoin notation) and SQL queries for:
+
+
+-- Find the name of Employees who are managers
+
+SELECT
+     name
+FROM
+     Employee E, Manages M
+WHERE
+     E.eid = M.eid;    
+
+-- Find the name of Employees who work for the “shoe” department.
+
+SELECT 
+     name
+FROM
+     Employee E, WorksFor W, Department D
+WHERE
+     E.eid = W.eid and W.did = D.did and D.name = 'shoe';
+
+-- Find the age of Employees who are greater than 30 and reside in California.
+
+SELECT
+     age
+FROM
+     Employees E
+WHERE
+     E.residenceState = 'California' and E.age > 30;
+
+-- Find the name, age and salary of managers who started managing between 2022-01-01 and 2022-04-01 and manage a team of employees from the “shoe” department.
+
+SELECT
+     name,
+     age,
+     salary
+FROM
+     Employees E, Manages M, Department D
+WHERE
+     E.eid = M.eid and M.did = D.did and D.name = 'shoe' 
+     and M.dateStartedManaging >= 2022-01-01 and M.dateStartedManaging <= 2022-04-01;

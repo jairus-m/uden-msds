@@ -1,0 +1,4 @@
+1A) cut -w -f 9 Data.txt > T_DAILY_AVG.txt
+1B) sort -n T_DAILY_AVG.txt > T_DAILY_AVG_sorted.txt
+1C) cut -w -f 9 Data.txt | sort -n > T_DAILY_AVG_sorted.txt
+    cut -w -f 9 Data.txt | sort -n | python compute_stats.py

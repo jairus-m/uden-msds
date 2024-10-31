@@ -1,0 +1,399 @@
+Make,Model,Year,MPG
+Chevrolet,Chevelle Malibu,1970,18.0
+Buick,Skylark 320,1970,15.0
+Plymouth,Satellite,1970,18.0
+Amc,Rebel Sst,1970,16.0
+Ford,Torino,1970,17.0
+Ford,Galaxie 500,1970,15.0
+Chevrolet,Impala,1970,14.0
+Plymouth,Fury Iii,1970,14.0
+Pontiac,Catalina,1970,14.0
+Amc,Ambassador Dpl,1970,15.0
+Dodge,Challenger Se,1970,15.0
+Plymouth,'Cuda 340,1970,14.0
+Chevrolet,Monte Carlo,1970,15.0
+Buick,Estate Wagon (Sw),1970,14.0
+Toyota,Corona Mark Ii,1970,24.0
+Plymouth,Duster,1970,22.0
+Amc,Hornet,1970,18.0
+Ford,Maverick,1970,21.0
+Datsun,Pl510,1970,27.0
+Volkswagen,1131 Deluxe Sedan,1970,26.0
+Peugeot,504,1970,25.0
+Audi,100 Ls,1970,24.0
+Saab,99E,1970,25.0
+Bmw,2002,1970,26.0
+Amc,Gremlin,1970,21.0
+Ford,F250,1970,10.0
+Chevrolet,C20,1970,10.0
+Dodge,D200,1970,11.0
+Hi,1200D,1970,9.0
+Datsun,Pl510,1971,27.0
+Chevrolet,Vega 2300,1971,28.0
+Toyota,Corona,1971,25.0
+Ford,Pinto,1971,25.0
+Amc,Gremlin,1971,19.0
+Plymouth,Satellite Custom,1971,16.0
+Chevrolet,Chevelle Malibu,1971,17.0
+Ford,Torino 500,1971,19.0
+Amc,Matador,1971,18.0
+Chevrolet,Impala,1971,14.0
+Pontiac,Catalina Brougham,1971,14.0
+Ford,Galaxie 500,1971,14.0
+Plymouth,Fury Iii,1971,14.0
+Dodge,Monaco (Sw),1971,12.0
+Ford,Country Squire (Sw),1971,13.0
+Pontiac,Safari (Sw),1971,13.0
+Amc,Hornet Sportabout (Sw),1971,18.0
+Chevrolet,Vega (Sw),1971,22.0
+Pontiac,Firebird,1971,19.0
+Ford,Mustang,1971,18.0
+Mercury,Capri 2000,1971,23.0
+Opel,1900,1971,28.0
+Peugeot,304,1971,30.0
+Fiat,124B,1971,30.0
+Toyota,Corolla 1200,1971,31.0
+Datsun,1200,1971,35.0
+Volkswagen,Model 111,1971,27.0
+Plymouth,Cricket,1971,26.0
+Toyota,Corona Hardtop,1972,24.0
+Dodge,Colt Hardtop,1972,25.0
+Volkswagen,Type 3,1972,23.0
+Chevrolet,Vega,1972,20.0
+Ford,Pinto Runabout,1972,21.0
+Chevrolet,Impala,1972,13.0
+Pontiac,Catalina,1972,14.0
+Plymouth,Fury Iii,1972,15.0
+Ford,Galaxie 500,1972,14.0
+Amc,Ambassador Sst,1972,17.0
+Mercury,Marquis,1972,11.0
+Buick,Lesabre Custom,1972,13.0
+Oldsmobile,Delta 88 Royale,1972,12.0
+Chrysler,Newport Royal,1972,13.0
+Mazda,Rx2 Coupe,1972,19.0
+Amc,Matador (Sw),1972,15.0
+Chevrolet,Chevelle Concours (Sw),1972,13.0
+Ford,Gran Torino (Sw),1972,13.0
+Plymouth,Satellite Custom (Sw),1972,14.0
+Volvo,145E (Sw),1972,18.0
+Volkswagen,411 (Sw),1972,22.0
+Peugeot,504 (Sw),1972,21.0
+Renault,12 (Sw),1972,26.0
+Ford,Pinto (Sw),1972,22.0
+Datsun,510 (Sw),1972,28.0
+Toyota,Corona Mark Ii (Sw),1972,23.0
+Dodge,Colt (Sw),1972,28.0
+Toyota,Corolla 1600 (Sw),1972,27.0
+Buick,Century 350,1973,13.0
+Amc,Matador,1973,14.0
+Chevrolet,Malibu,1973,13.0
+Ford,Gran Torino,1973,14.0
+Dodge,Coronet Custom,1973,15.0
+Mercury,Marquis Brougham,1973,12.0
+Chevrolet,Caprice Classic,1973,13.0
+Ford,Ltd,1973,13.0
+Plymouth,Fury Gran Sedan,1973,14.0
+Chrysler,New Yorker Brougham,1973,13.0
+Buick,Electra 225 Custom,1973,12.0
+Amc,Ambassador Brougham,1973,13.0
+Plymouth,Valiant,1973,18.0
+Chevrolet,Nova Custom,1973,16.0
+Amc,Hornet,1973,18.0
+Ford,Maverick,1973,18.0
+Plymouth,Duster,1973,23.0
+Volkswagen,Super Beetle,1973,26.0
+Chevrolet,Impala,1973,11.0
+Ford,Country,1973,12.0
+Plymouth,Custom Suburb,1973,13.0
+Oldsmobile,Vista Cruiser,1973,12.0
+Amc,Gremlin,1973,18.0
+Toyota,Carina,1973,20.0
+Chevrolet,Vega,1973,21.0
+Datsun,610,1973,22.0
+Mazda,Rx3,1973,18.0
+Ford,Pinto,1973,19.0
+Mercury,Capri V6,1973,21.0
+Fiat,124 Sport Coupe,1973,26.0
+Chevrolet,Monte Carlo S,1973,15.0
+Pontiac,Grand Prix,1973,16.0
+Fiat,128,1973,29.0
+Opel,Manta,1973,24.0
+Audi,100Ls,1973,20.0
+Volvo,144Ea,1973,19.0
+Dodge,Dart Custom,1973,15.0
+Saab,99Le,1973,24.0
+Toyota,Mark Ii,1973,20.0
+Oldsmobile,Omega,1973,11.0
+Plymouth,Duster,1974,20.0
+Ford,Maverick,1974,21.0
+Amc,Hornet,1974,19.0
+Chevrolet,Nova,1974,15.0
+Datsun,B210,1974,31.0
+Ford,Pinto,1974,26.0
+Toyota,Corolla 1200,1974,32.0
+Chevrolet,Vega,1974,25.0
+Chevrolet,Chevelle Malibu Classic,1974,16.0
+Amc,Matador,1974,16.0
+Plymouth,Satellite Sebring,1974,18.0
+Ford,Gran Torino,1974,16.0
+Buick,Century Luxus (Sw),1974,13.0
+Dodge,Coronet Custom (Sw),1974,14.0
+Ford,Gran Torino (Sw),1974,14.0
+Amc,Matador (Sw),1974,14.0
+Audi,Fox,1974,29.0
+Volkswagen,Dasher,1974,26.0
+Opel,Manta,1974,26.0
+Toyota,Corona,1974,31.0
+Datsun,710,1974,32.0
+Dodge,Colt,1974,28.0
+Fiat,128,1974,24.0
+Fiat,124 Tc,1974,26.0
+Honda,Civic,1974,24.0
+Subaru,,1974,26.0
+Fiat,X1.9,1974,31.0
+Plymouth,Valiant Custom,1975,19.0
+Chevrolet,Nova,1975,18.0
+Mercury,Monarch,1975,15.0
+Ford,Maverick,1975,15.0
+Pontiac,Catalina,1975,16.0
+Chevrolet,Bel Air,1975,15.0
+Plymouth,Grand Fury,1975,16.0
+Ford,Ltd,1975,14.0
+Buick,Century,1975,17.0
+Chevrolet,Chevelle Malibu,1975,16.0
+Amc,Matador,1975,15.0
+Plymouth,Fury,1975,18.0
+Buick,Skyhawk,1975,21.0
+Chevrolet,Monza 2+2,1975,20.0
+Ford,Mustang Ii,1975,13.0
+Toyota,Corolla,1975,29.0
+Ford,Pinto,1975,23.0
+Amc,Gremlin,1975,20.0
+Pontiac,Astro,1975,23.0
+Toyota,Corona,1975,24.0
+Volkswagen,Dasher,1975,25.0
+Datsun,710,1975,24.0
+Ford,Pinto,1975,18.0
+Volkswagen,Rabbit,1975,29.0
+Amc,Pacer,1975,19.0
+Audi,100Ls,1975,23.0
+Peugeot,504,1975,23.0
+Volvo,244Dl,1975,22.0
+Saab,99Le,1975,25.0
+Honda,Civic Cvcc,1975,33.0
+Fiat,131,1976,28.0
+Opel,1900,1976,25.0
+Capri,Ii,1976,25.0
+Dodge,Colt,1976,26.0
+Renault,12Tl,1976,27.0
+Chevrolet,Chevelle Malibu Classic,1976,17.5
+Dodge,Coronet Brougham,1976,16.0
+Amc,Matador,1976,15.5
+Ford,Gran Torino,1976,14.5
+Plymouth,Valiant,1976,22.0
+Chevrolet,Nova,1976,22.0
+Ford,Maverick,1976,24.0
+Amc,Hornet,1976,22.5
+Chevrolet,Chevette,1976,29.0
+Chevrolet,Woody,1976,24.5
+Volkswagen,Rabbit,1976,29.0
+Honda,Civic,1976,33.0
+Dodge,Aspen Se,1976,20.0
+Ford,Granada Ghia,1976,18.0
+Pontiac,Ventura Sj,1976,18.5
+Amc,Pacer D/L,1976,17.5
+Volkswagen,Rabbit,1976,29.5
+Datsun,B-210,1976,32.0
+Toyota,Corolla,1976,28.0
+Ford,Pinto,1976,26.5
+Volvo,245,1976,20.0
+Plymouth,Volare Premier V8,1976,13.0
+Peugeot,504,1976,19.0
+Toyota,Mark Ii,1976,19.0
+Mercedes,280S,1976,16.5
+Cadillac,Seville,1976,16.5
+Chevrolet,C10,1976,13.0
+Ford,F108,1976,13.0
+Dodge,D100,1976,13.0
+Honda,Accord Cvcc,1977,31.5
+Buick,Opel Isuzu Deluxe,1977,30.0
+Renault,5 Gtl,1977,36.0
+Plymouth,Arrow Gs,1977,25.5
+Datsun,F-10 Hatchback,1977,33.5
+Chevrolet,Caprice Classic,1977,17.5
+Oldsmobile,Cutlass Supreme,1977,17.0
+Dodge,Monaco Brougham,1977,15.5
+Mercury,Cougar Brougham,1977,15.0
+Chevrolet,Concours,1977,17.5
+Buick,Skylark,1977,20.5
+Plymouth,Volare Custom,1977,19.0
+Ford,Granada,1977,18.5
+Pontiac,Grand Prix Lj,1977,16.0
+Chevrolet,Monte Carlo Landau,1977,15.5
+Chrysler,Cordoba,1977,15.5
+Ford,Thunderbird,1977,16.0
+Volkswagen,Rabbit Custom,1977,29.0
+Pontiac,Sunbird Coupe,1977,24.5
+Toyota,Corolla Liftback,1977,26.0
+Ford,Mustang Ii 2+2,1977,25.5
+Chevrolet,Chevette,1977,30.5
+Dodge,Colt M/M,1977,33.5
+Subaru,Dl,1977,30.0
+Volkswagen,Dasher,1977,30.5
+Datsun,810,1977,22.0
+Bmw,320I,1977,21.5
+Mazda,Rx-4,1977,21.5
+Volkswagen,Rabbit Custom Diesel,1978,43.1
+Ford,Fiesta,1978,36.1
+Mazda,Glc Deluxe,1978,32.8
+Datsun,B210 Gx,1978,39.4
+Honda,Civic Cvcc,1978,36.1
+Oldsmobile,Cutlass Salon Brougham,1978,19.9
+Dodge,Diplomat,1978,19.4
+Mercury,Monarch Ghia,1978,20.2
+Pontiac,Phoenix Lj,1978,19.2
+Chevrolet,Malibu,1978,20.5
+Ford,Fairmont (Auto),1978,20.2
+Ford,Fairmont (Man),1978,25.1
+Plymouth,Volare,1978,20.5
+Amc,Concord,1978,19.4
+Buick,Century Special,1978,20.6
+Mercury,Zephyr,1978,20.8
+Dodge,Aspen,1978,18.6
+Amc,Concord D/L,1978,18.1
+Chevrolet,Monte Carlo Landau,1978,19.2
+Buick,Regal Sport Coupe (Turbo),1978,17.7
+Ford,Futura,1978,18.1
+Dodge,Magnum Xe,1978,17.5
+Chevrolet,Chevette,1978,30.0
+Toyota,Corona,1978,27.5
+Datsun,510,1978,27.2
+Dodge,Omni,1978,30.9
+Toyota,Celica Gt Liftback,1978,21.1
+Plymouth,Sapporo,1978,23.2
+Oldsmobile,Starfire Sx,1978,23.8
+Datsun,200-Sx,1978,23.9
+Audi,5000,1978,20.3
+Volvo,264Gl,1978,17.0
+Saab,99Gle,1978,21.6
+Peugeot,604Sl,1978,16.2
+Volkswagen,Scirocco,1978,31.5
+Honda,Accord Lx,1978,29.5
+Pontiac,Lemans V6,1979,21.5
+Mercury,Zephyr 6,1979,19.8
+Ford,Fairmont 4,1979,22.3
+Amc,Concord Dl 6,1979,20.2
+Dodge,Aspen 6,1979,20.6
+Chevrolet,Caprice Classic,1979,17.0
+Ford,Ltd Landau,1979,17.6
+Mercury,Grand Marquis,1979,16.5
+Dodge,St. Regis,1979,18.2
+Buick,Estate Wagon (Sw),1979,16.9
+Ford,Country Squire (Sw),1979,15.5
+Chevrolet,Malibu Classic (Sw),1979,19.2
+Chrysler,Lebaron Town @ Country (Sw),1979,18.5
+Volkswagen,Rabbit Custom,1979,31.9
+Mazda,Glc Deluxe,1979,34.1
+Dodge,Colt Hatchback Custom,1979,35.7
+Amc,Spirit Dl,1979,27.4
+Mercedes,Benz 300D,1979,25.4
+Cadillac,Eldorado,1979,23.0
+Peugeot,504,1979,27.2
+Oldsmobile,Cutlass Salon Brougham,1979,23.9
+Plymouth,Horizon,1979,34.2
+Plymouth,Horizon Tc3,1979,34.5
+Datsun,210,1979,31.8
+Fiat,Strada Custom,1979,37.3
+Buick,Skylark Limited,1979,28.4
+Chevrolet,Citation,1979,28.8
+Oldsmobile,Omega Brougham,1979,26.8
+Pontiac,Phoenix,1979,33.5
+Volkswagen,Rabbit,1980,41.5
+Toyota,Corolla Tercel,1980,38.1
+Chevrolet,Chevette,1980,32.1
+Datsun,310,1980,37.2
+Chevrolet,Citation,1980,28.0
+Ford,Fairmont,1980,26.4
+Amc,Concord,1980,24.3
+Dodge,Aspen,1980,19.1
+Audi,4000,1980,34.3
+Toyota,Corona Liftback,1980,29.8
+Mazda,626,1980,31.3
+Datsun,510 Hatchback,1980,37.0
+Toyota,Corolla,1980,32.2
+Mazda,Glc,1980,46.6
+Dodge,Colt,1980,27.9
+Datsun,210,1980,40.8
+Volkswagen,Rabbit C (Diesel),1980,44.3
+Volkswagen,Dasher (Diesel),1980,43.4
+Audi,5000S (Diesel),1980,36.4
+Mercedes,240D,1980,30.0
+Honda,Civic 1500 Gl,1980,44.6
+Renault,Lecar Deluxe,1980,40.9
+Subaru,Dl,1980,33.8
+Volkswagen,Rabbit,1980,29.8
+Datsun,280-Zx,1980,32.7
+Mazda,Rx-7 Gs,1980,23.7
+Triumph,Tr7 Coupe,1980,35.0
+Ford,Mustang Cobra,1980,23.6
+Honda,Accord,1980,32.4
+Plymouth,Reliant,1981,27.2
+Buick,Skylark,1981,26.6
+Dodge,Aries Wagon (Sw),1981,25.8
+Chevrolet,Citation,1981,23.5
+Plymouth,Reliant,1981,30.0
+Toyota,Starlet,1981,39.1
+Plymouth,Champ,1981,39.0
+Honda,Civic 1300,1981,35.1
+Subaru,,1981,32.3
+Datsun,210 Mpg,1981,37.0
+Toyota,Tercel,1981,37.7
+Mazda,Glc 4,1981,34.1
+Plymouth,Horizon 4,1981,34.7
+Ford,Escort 4W,1981,34.4
+Ford,Escort 2H,1981,29.9
+Volkswagen,Jetta,1981,33.0
+Renault,18I,1981,34.5
+Honda,Prelude,1981,33.7
+Toyota,Corolla,1981,32.4
+Datsun,200Sx,1981,32.9
+Mazda,626,1981,31.6
+Peugeot,505S Turbo Diesel,1981,28.1
+Volvo,Diesel,1981,30.7
+Toyota,Cressida,1981,25.4
+Datsun,810 Maxima,1981,24.2
+Buick,Century,1981,22.4
+Oldsmobile,Cutlass Ls,1981,26.6
+Ford,Granada Gl,1981,20.2
+Chrysler,Lebaron Salon,1981,17.6
+Chevrolet,Cavalier,1982,28.0
+Chevrolet,Cavalier Wagon,1982,27.0
+Chevrolet,Cavalier 2-Door,1982,34.0
+Pontiac,J2000 Se Hatchback,1982,31.0
+Dodge,Aries Se,1982,29.0
+Pontiac,Phoenix,1982,27.0
+Ford,Fairmont Futura,1982,24.0
+Amc,Concord Dl,1982,23.0
+Volkswagen,Rabbit L,1982,36.0
+Mazda,Glc Custom L,1982,37.0
+Mazda,Glc Custom,1982,31.0
+Plymouth,Horizon Miser,1982,38.0
+Mercury,Lynx L,1982,36.0
+Nissan,Stanza Xe,1982,36.0
+Honda,Accord,1982,36.0
+Toyota,Corolla,1982,34.0
+Honda,Civic,1982,38.0
+Honda,Civic (Auto),1982,32.0
+Datsun,310 Gx,1982,38.0
+Buick,Century Limited,1982,25.0
+Oldsmobile,Cutlass Ciera (Diesel),1982,38.0
+Chrysler,Lebaron Medallion,1982,26.0
+Ford,Granada L,1982,22.0
+Toyota,Celica Gt,1982,32.0
+Dodge,Charger 2.2,1982,36.0
+Chevrolet,Camaro,1982,27.0
+Ford,Mustang Gl,1982,27.0
+Volkswagen,Pickup,1982,44.0
+Dodge,Rampage,1982,32.0
+Ford,Ranger,1982,28.0
+Chevrolet,S-10,1982,31.0

@@ -1,0 +1,272 @@
+Last login: Fri Feb  2 20:08:27 on ttys018
+You have new mail.
+(base) jairusmartinez@Jairuss-MacBook-Pro week4 % mysql --local-infile=1 -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 38
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source martinez_jairus_04.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 3 rows affected (0.05 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 10000 rows affected (0.06 sec)
+Records: 10000  Deleted: 0  Skipped: 0  Warnings: 0
+
+Query OK, 3546 rows affected, 3546 warnings (0.04 sec)
+Records: 3546  Deleted: 0  Skipped: 0  Warnings: 3546
+
+Query OK, 498884 rows affected (4.68 sec)
+Records: 498884  Deleted: 0  Skipped: 0  Warnings: 0
+
++----------------+
+| Tables_in_dash |
++----------------+
+| Activities     |
+| Subscriptions  |
+| Users          |
++----------------+
+3 rows in set (0.00 sec)
+
++------------------------+
+|                        |
++------------------------+
+| running describe Users |
++------------------------+
+1 row in set (0.00 sec)
+
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| user_id           | int          | NO   | PRI | NULL    |       |
+| name              | varchar(255) | YES  |     | NULL    |       |
+| subscription_type | varchar(255) | YES  |     | NULL    |       |
+| date_created      | date         | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
++--------------------------------+
+|                                |
++--------------------------------+
+| running describe Subscriptions |
++--------------------------------+
+1 row in set (0.00 sec)
+
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| sub_id           | int          | NO   | PRI | NULL    |       |
+| user_id          | int          | YES  | MUL | NULL    |       |
+| payment_interval | varchar(255) | YES  |     | NULL    |       |
+| payment_cost     | int          | YES  |     | NULL    |       |
+| purchase_date    | date         | YES  |     | NULL    |       |
+| end_date         | date         | YES  |     | NULL    |       |
+| status           | varchar(255) | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
++-----------------------------+
+|                             |
++-----------------------------+
+| running describe Activities |
++-----------------------------+
+1 row in set (0.00 sec)
+
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| actv_id     | int          | NO   | PRI | NULL    |       |
+| user_id     | int          | YES  | MUL | NULL    |       |
+| actv_name   | varchar(255) | YES  |     | NULL    |       |
+| actv_type   | varchar(255) | YES  |     | NULL    |       |
+| avg_speed   | int          | YES  |     | NULL    |       |
+| duration    | int          | YES  |     | NULL    |       |
+| heartrate   | int          | YES  |     | NULL    |       |
+| upload_date | date         | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
++--------------------------------------+
+|                                      |
++--------------------------------------+
+| running select * from Users LIMIT 10 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
++---------+--------+-------------------+--------------+
+| user_id | name   | subscription_type | date_created |
++---------+--------+-------------------+--------------+
+|       1 | user1  | free              | 2020-06-03   |
+|       2 | user2  | premium           | 2020-11-29   |
+|       3 | user3  | premium           | 2019-09-26   |
+|       4 | user4  | premium           | 2019-09-02   |
+|       5 | user5  | premium           | 2021-01-02   |
+|       6 | user6  | free              | 2020-11-06   |
+|       7 | user7  | free              | 2018-07-18   |
+|       8 | user8  | free              | 2017-04-08   |
+|       9 | user9  | free              | 2020-10-21   |
+|      10 | user10 | free              | 2018-02-23   |
++---------+--------+-------------------+--------------+
+10 rows in set (0.00 sec)
+
++--------------------------------------+
+|                                      |
++--------------------------------------+
+|  running SELECT COUNT(*) FROM Users; |
++--------------------------------------+
+1 row in set (0.00 sec)
+
++----------+
+| COUNT(*) |
++----------+
+|    10000 |
++----------+
+1 row in set (0.00 sec)
+
++----------------------------------------------+
+|                                              |
++----------------------------------------------+
+| running select * from Subscriptions LIMIT 10 |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
++--------+---------+------------------+--------------+---------------+----------+--------+
+| sub_id | user_id | payment_interval | payment_cost | purchase_date | end_date | status |
++--------+---------+------------------+--------------+---------------+----------+--------+
+|     52 |       2 | monthly          |           11 | 2021-06-06    | NULL     | active |
+|     53 |       3 | monthly          |           11 | 2020-09-20    | NULL     | active |
+|     54 |       4 | semi-annual      |           65 | 2020-02-28    | NULL     | active |
+|     55 |       5 | semi-annual      |           65 | 2021-12-16    | NULL     | active |
+|    511 |      11 | monthly          |           11 | 2018-12-27    | NULL     | active |
+|    516 |      16 | monthly          |           11 | 2020-11-15    | NULL     | active |
+|    518 |      18 | monthly          |           11 | 2019-11-27    | NULL     | active |
+|    519 |      19 | monthly          |           11 | 2019-04-15    | NULL     | active |
+|    521 |      21 | monthly          |           11 | 2018-11-30    | NULL     | active |
+|    522 |      22 | monthly          |           11 | 2019-04-27    | NULL     | active |
++--------+---------+------------------+--------------+---------------+----------+--------+
+10 rows in set (0.00 sec)
+
++---------------------------------------------+
+|                                             |
++---------------------------------------------+
+| running SELECT COUNT(*) FROM Subscriptions; |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
++----------+
+| COUNT(*) |
++----------+
+|     3546 |
++----------+
+1 row in set (0.00 sec)
+
++-------------------------------------------+
+|                                           |
++-------------------------------------------+
+| running select * from Activities LIMIT 10 |
++-------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+| actv_id | user_id | actv_name   | actv_type    | avg_speed | duration | heartrate | upload_date |
++---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+|     100 |       1 | Activity_84 | RockClimbing |         0 |       32 |       144 | 2020-11-15  |
+|     101 |       1 | Activity_47 | Swimming     |         2 |       15 |       145 | 2021-12-31  |
+|     102 |       1 | Activity_79 | Gym          |         0 |       75 |       145 | 2022-08-24  |
+|     103 |       1 | Activity_29 | Gym          |         0 |       27 |       148 | 2020-05-14  |
+|     200 |       2 | Activity_51 | Cycling      |        10 |      192 |       115 | 2022-02-26  |
+|     201 |       2 | Activity_94 | Hiking       |         2 |       18 |       144 | 2022-05-20  |
+|     202 |       2 | Activity_43 | RockClimbing |         0 |      109 |       127 | 2021-03-30  |
+|     203 |       2 | Activity_21 | RockClimbing |         0 |       28 |       139 | 2021-07-31  |
+|     204 |       2 | Activity_93 | RockClimbing |         0 |       92 |       158 | 2022-04-08  |
+|     205 |       2 | Activity_86 | Gym          |         0 |       80 |       146 | 2023-12-16  |
++---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+10 rows in set (0.00 sec)
+
++------------------------------------------+
+|                                          |
++------------------------------------------+
+| running SELECT COUNT(*) FROM Activities; |
++------------------------------------------+
+1 row in set (0.00 sec)
+
++----------+
+| COUNT(*) |
++----------+
+|   498884 |
++----------+
+1 row in set (0.01 sec)
+
++-------------------------------------------------------------------------------------+
+|                                                                                     |
++-------------------------------------------------------------------------------------+
+| running select * FROM Users U, Subscriptions S WHERE U.user_id = S.user_id LIMIT 10 |
++-------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+--------+-------------------+--------------+--------+---------+------------------+--------------+---------------+----------+--------+
+| user_id | name   | subscription_type | date_created | sub_id | user_id | payment_interval | payment_cost | purchase_date | end_date | status |
++---------+--------+-------------------+--------------+--------+---------+------------------+--------------+---------------+----------+--------+
+|       2 | user2  | premium           | 2020-11-29   |     52 |       2 | monthly          |           11 | 2021-06-06    | NULL     | active |
+|       3 | user3  | premium           | 2019-09-26   |     53 |       3 | monthly          |           11 | 2020-09-20    | NULL     | active |
+|       4 | user4  | premium           | 2019-09-02   |     54 |       4 | semi-annual      |           65 | 2020-02-28    | NULL     | active |
+|       5 | user5  | premium           | 2021-01-02   |     55 |       5 | semi-annual      |           65 | 2021-12-16    | NULL     | active |
+|      11 | user11 | premium           | 2018-01-30   |    511 |      11 | monthly          |           11 | 2018-12-27    | NULL     | active |
+|      16 | user16 | premium           | 2020-05-23   |    516 |      16 | monthly          |           11 | 2020-11-15    | NULL     | active |
+|      18 | user18 | premium           | 2019-11-16   |    518 |      18 | monthly          |           11 | 2019-11-27    | NULL     | active |
+|      19 | user19 | premium           | 2019-03-12   |    519 |      19 | monthly          |           11 | 2019-04-15    | NULL     | active |
+|      21 | user21 | premium           | 2018-11-26   |    521 |      21 | monthly          |           11 | 2018-11-30    | NULL     | active |
+|      22 | user22 | premium           | 2018-12-07   |    522 |      22 | monthly          |           11 | 2019-04-27    | NULL     | active |
++---------+--------+-------------------+--------------+--------+---------+------------------+--------------+---------------+----------+--------+
+10 rows in set (0.00 sec)
+
++----------------------------------------------------------------------------------+
+|                                                                                  |
++----------------------------------------------------------------------------------+
+| running select * from Users U, Activities A where U.user_id = A.user_id LIMTI 10 |
++----------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-------+-------------------+--------------+---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+| user_id | name  | subscription_type | date_created | actv_id | user_id | actv_name   | actv_type    | avg_speed | duration | heartrate | upload_date |
++---------+-------+-------------------+--------------+---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+|       1 | user1 | free              | 2020-06-03   |     100 |       1 | Activity_84 | RockClimbing |         0 |       32 |       144 | 2020-11-15  |
+|       1 | user1 | free              | 2020-06-03   |     101 |       1 | Activity_47 | Swimming     |         2 |       15 |       145 | 2021-12-31  |
+|       1 | user1 | free              | 2020-06-03   |     102 |       1 | Activity_79 | Gym          |         0 |       75 |       145 | 2022-08-24  |
+|       1 | user1 | free              | 2020-06-03   |     103 |       1 | Activity_29 | Gym          |         0 |       27 |       148 | 2020-05-14  |
+|       2 | user2 | premium           | 2020-11-29   |     200 |       2 | Activity_51 | Cycling      |        10 |      192 |       115 | 2022-02-26  |
+|       2 | user2 | premium           | 2020-11-29   |     201 |       2 | Activity_94 | Hiking       |         2 |       18 |       144 | 2022-05-20  |
+|       2 | user2 | premium           | 2020-11-29   |     202 |       2 | Activity_43 | RockClimbing |         0 |      109 |       127 | 2021-03-30  |
+|       2 | user2 | premium           | 2020-11-29   |     203 |       2 | Activity_21 | RockClimbing |         0 |       28 |       139 | 2021-07-31  |
+|       2 | user2 | premium           | 2020-11-29   |     204 |       2 | Activity_93 | RockClimbing |         0 |       92 |       158 | 2022-04-08  |
+|       2 | user2 | premium           | 2020-11-29   |     205 |       2 | Activity_86 | Gym          |         0 |       80 |       146 | 2023-12-16  |
++---------+-------+-------------------+--------------+---------+---------+-------------+--------------+-----------+----------+-----------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> 

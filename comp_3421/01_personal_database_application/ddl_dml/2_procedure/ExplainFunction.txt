@@ -1,0 +1,1 @@
+This procedure/function takes in the user_id as input and then outputs summary statistics of all their activity data. This includes total activity counts, total activity duration, and total distance traveled.

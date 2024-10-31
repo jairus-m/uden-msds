@@ -1,0 +1,200 @@
+Last login: Thu Jan 25 20:35:48 on ttys076
+You have new mail.
+(base) jairusmartinez@Jairuss-MacBook-Pro week3 % mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source martinez_jairus_03.sql
+Query OK, 3 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Empty set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
++----------------+
+| Tables_in_dash |
++----------------+
+| Activities     |
+| Subscriptions  |
+| Users          |
++----------------+
+3 rows in set (0.00 sec)
+
++------------------------+
+|                        |
++------------------------+
+| running describe Users |
++------------------------+
+1 row in set (0.00 sec)
+
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| user_id           | int          | NO   | PRI | NULL    |       |
+| name              | varchar(255) | YES  |     | NULL    |       |
+| subscription_type | varchar(255) | YES  |     | NULL    |       |
+| date_created      | date         | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
++--------------------------------+
+|                                |
++--------------------------------+
+| running describe Subscriptions |
++--------------------------------+
+1 row in set (0.00 sec)
+
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| sub_id           | int          | NO   | PRI | NULL    |       |
+| user_id          | int          | YES  | MUL | NULL    |       |
+| payment_interval | varchar(255) | YES  |     | NULL    |       |
+| payment_cost     | int          | YES  |     | NULL    |       |
+| status           | varchar(255) | YES  |     | NULL    |       |
+| end_date         | date         | YES  |     | NULL    |       |
+| purchase_date    | date         | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
++-----------------------------+
+|                             |
++-----------------------------+
+| running describe Activities |
++-----------------------------+
+1 row in set (0.00 sec)
+
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| actv_id     | int          | NO   | PRI | NULL    |       |
+| user_id     | int          | YES  | MUL | NULL    |       |
+| actv_name   | varchar(255) | YES  |     | NULL    |       |
+| actv_type   | varchar(255) | YES  |     | NULL    |       |
+| avg_speed   | int          | YES  |     | NULL    |       |
+| duration    | int          | YES  |     | NULL    |       |
+| heartrate   | int          | YES  |     | NULL    |       |
+| upload_date | date         | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
++-----------------------------+
+|                             |
++-----------------------------+
+| running select * from Users |
++-----------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------------+-------------------+--------------+
+| user_id | name            | subscription_type | date_created |
++---------+-----------------+-------------------+--------------+
+|       1 | Jairus Martinez | free              | 2016-09-13   |
+|       2 | Haley Runyan    | free              | 2023-12-21   |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |
++---------+-----------------+-------------------+--------------+
+3 rows in set (0.00 sec)
+
++-------------------------------------+
+|                                     |
++-------------------------------------+
+| running select * from Subscriptions |
++-------------------------------------+
+1 row in set (0.00 sec)
+
++--------+---------+------------------+--------------+--------+----------+---------------+
+| sub_id | user_id | payment_interval | payment_cost | status | end_date | purchase_date |
++--------+---------+------------------+--------------+--------+----------+---------------+
+|      2 |       3 | monthly          |           20 | active | NULL     | 2015-01-21    |
++--------+---------+------------------+--------------+--------+----------+---------------+
+1 row in set (0.00 sec)
+
++----------------------------------------------------------------------------+
+|                                                                            |
++----------------------------------------------------------------------------+
+| running select * FROM Users U, Subscriptions S WHERE U.user_id = S.user_id |
++----------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+----------------+-------------------+--------------+--------+---------+------------------+--------------+--------+----------+---------------+
+| user_id | name           | subscription_type | date_created | sub_id | user_id | payment_interval | payment_cost | status | end_date | purchase_date |
++---------+----------------+-------------------+--------------+--------+---------+------------------+--------------+--------+----------+---------------+
+|       3 | Lionel Sanders | premium           | 2011-04-21   |      2 |       3 | monthly          |           20 | active | NULL     | 2015-01-21    |
++---------+----------------+-------------------+--------------+--------+---------+------------------+--------------+--------+----------+---------------+
+1 row in set (0.00 sec)
+
++-------------------------------------------------------------------------+
+|                                                                         |
++-------------------------------------------------------------------------+
+| running select * from Users U, Activities A where U.user_id = A.user_id |
++-------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
++---------+-----------------+-------------------+--------------+---------+---------+--------------------+-----------+-----------+----------+-----------+-------------+
+| user_id | name            | subscription_type | date_created | actv_id | user_id | actv_name          | actv_type | avg_speed | duration | heartrate | upload_date |
++---------+-----------------+-------------------+--------------+---------+---------+--------------------+-----------+-----------+----------+-----------+-------------+
+|       1 | Jairus Martinez | free              | 2016-09-13   |       1 |       1 | Morning Run        | Running   |         8 |       45 |       150 | 2024-01-25  |
+|       1 | Jairus Martinez | free              | 2016-09-13   |       2 |       1 | Afternoon Cycling  | Cycling   |        20 |       60 |       120 | 2024-01-26  |
+|       1 | Jairus Martinez | free              | 2016-09-13   |       3 |       1 | Evening Hike       | Hiking    |         5 |      120 |       110 | 2024-01-27  |
+|       1 | Jairus Martinez | free              | 2016-09-13   |       4 |       1 | Indoor Workout     | Gym       |        10 |       30 |       130 | 2024-01-28  |
+|       1 | Jairus Martinez | free              | 2016-09-13   |       5 |       1 | Swimming Session   | Swimming  |         2 |       60 |       140 | 2024-01-29  |
+|       2 | Haley Runyan    | free              | 2023-12-21   |       6 |       2 | Cycling to Work    | Cycling   |        15 |       30 |       125 | 2024-01-25  |
+|       2 | Haley Runyan    | free              | 2023-12-21   |       7 |       2 | Yoga Session       | Yoga      |      NULL |       45 |      NULL | 2024-01-26  |
+|       2 | Haley Runyan    | free              | 2023-12-21   |       8 |       2 | Afternoon Walk     | Walking   |         4 |       60 |       105 | 2024-01-27  |
+|       2 | Haley Runyan    | free              | 2023-12-21   |       9 |       2 | Basketball Game    | Sports    |        12 |       90 |       140 | 2024-01-28  |
+|       2 | Haley Runyan    | free              | 2023-12-21   |      10 |       2 | Gym Training       | Gym       |         8 |       45 |       130 | 2024-01-29  |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |      11 |       3 | Morning Jog        | Running   |         7 |       40 |       155 | 2024-01-25  |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |      12 |       3 | Climbing Adventure | Climbing  |         3 |      180 |       100 | 2024-01-26  |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |      13 |       3 | Bike Ride in Park  | Cycling   |        18 |       60 |       120 | 2024-01-27  |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |      14 |       3 | Cardio Workout     | Gym       |         9 |       30 |       135 | 2024-01-28  |
+|       3 | Lionel Sanders  | premium           | 2011-04-21   |      15 |       3 | Swimming Practice  | Swimming  |         3 |       90 |       145 | 2024-01-29  |
++---------+-----------------+-------------------+--------------+---------+---------+--------------------+-----------+-----------+----------+-----------+-------------+
+15 rows in set (0.00 sec)
+
+mysql> 
