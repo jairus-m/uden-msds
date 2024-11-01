@@ -3,6 +3,7 @@
 - __COMP 3007:__ Multivariable Calculus
 - __COMP 3008:__ Linear Algebra + Discrete Math
 - __COMP 3421:__ Relational Databases / Document Stores
+_ __COMP 4401:__ Python
 - __COMP 4432:__ Machine Learning
 - __COMP 4441:__ Prob + Stats
 - __COMP 4442:__ Advanced Prob + Stats
