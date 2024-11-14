@@ -1,4 +1,4 @@
-# University of Denver - MS Data Science Projects
+# University of Denver - MS Data Science Course Work
 - __COMP 3006:__ Python Software Development
 - __COMP 3007:__ Multivariable Calculus
 - __COMP 3008:__ Linear Algebra + Discrete Math
