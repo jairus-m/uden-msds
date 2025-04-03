@@ -1,0 +1,25 @@
+artifact_path: nn_double__2
+flavors:
+  keras:
+    data: data
+    keras_backend: tensorflow
+    keras_version: 3.8.0
+    save_exported_model: false
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.keras
+    python_version: 3.12.3
+is_signature_from_type_hint: false
+mlflow_version: 2.20.0
+model_size_bytes: 1904907
+model_uuid: 6118e10cc3a14c968a4a342cddce0fca
+run_id: a1cc9fc7828343ce88affe0c864d56f6
+signature:
+  inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1, 3606]}}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1,
+    3]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-01-26 04:38:59.732176'

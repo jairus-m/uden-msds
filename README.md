@@ -7,4 +7,5 @@
 - __COMP 4432:__ Machine Learning
 - __COMP 4441:__ Prob + Stats
 - __COMP 4442:__ Advanced Prob + Stats
+- __COMP 4531:__ Deep Learning
 - __COMP 4581:__ Data Structures + Algorithms
